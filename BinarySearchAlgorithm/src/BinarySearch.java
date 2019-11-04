@@ -2,8 +2,8 @@ import java.util.*;
 
 public class BinarySearch {
 	public static void main(String[] args) {
-		// test list
-		List<Person> l = new ArrayList<Person>();
+	    // test list
+	    List<Person> l = new ArrayList<Person>();
 	    l.add(new Person(1, "Chris", "Evans", 30));
 	    l.add(new Person(2, "Adam","Sandler" , 35));
 	    l.add(new Person(3, "Bradley", "Cooper", 40));
@@ -21,8 +21,8 @@ public class BinarySearch {
 	    	listId.add(p.id);
 	    }	 	    
 	    // array with the ids
-        Integer[] intId = new Integer[listId.size()];
-        intId = listId.toArray(intId);
+            Integer[] intId = new Integer[listId.size()];
+            intId = listId.toArray(intId);
 	    	    
 	    // list with the first names
 	    List<String> listFirstname = new ArrayList<String>();
@@ -60,15 +60,15 @@ public class BinarySearch {
 	    
 	    long startTime = System.currentTimeMillis();
 	    int index = BinarySearch(intId, toFindId, 0, arrayFirstname.length - 1);
-		long endTime = System.currentTimeMillis();
-		System.out.println("BinarySearch total execution time: " + (endTime-startTime) + " ms"); 
+  	    long endTime = System.currentTimeMillis();
+	    System.out.println("BinarySearch total execution time: " + (endTime-startTime) + " ms"); 
 	    checkPerson(index, arrayFirstname, arrayLastname, arrayAge, toFindId, toFindFirstname, toFindLastname, toFindAge);
 	    // Output: 2 (BinarySearch)
 	    
 	    startTime = System.currentTimeMillis();
 	    index = LinearSearch(intId, toFindId);
-		endTime = System.currentTimeMillis();
-		System.out.println("LinearSearch total execution time: " + (endTime-startTime) + " ms"); 	    	    
+	    endTime = System.currentTimeMillis();
+	    System.out.println("LinearSearch total execution time: " + (endTime-startTime) + " ms"); 	    	    
 	    checkPerson(index, arrayFirstname, arrayLastname, arrayAge, toFindId, toFindFirstname, toFindLastname, toFindAge);
 	    // Output: 2 (LinearSearch)
 	    
@@ -81,15 +81,15 @@ public class BinarySearch {
 	    
 	    startTime = System.currentTimeMillis();
 	    index = BinarySearch(intId, toFindId, 0, arrayFirstname.length - 1);	
-		endTime = System.currentTimeMillis();
-		System.out.println("BinarySearch total execution time: " + (endTime-startTime) + " ms"); 
+	    endTime = System.currentTimeMillis();
+	    System.out.println("BinarySearch total execution time: " + (endTime-startTime) + " ms"); 
 	    checkPerson(index, arrayFirstname, arrayLastname, arrayAge, toFindId, toFindFirstname, toFindLastname, toFindAge);
 	    // Output: -1 (BinarySearch)
 
 	    startTime = System.currentTimeMillis();
 	    index = LinearSearch(intId, toFindId);
-		endTime = System.currentTimeMillis();
-		System.out.println("LinearSearch total execution time: " + (endTime-startTime) + " ms"); 	    	    
+	    endTime = System.currentTimeMillis();
+	    System.out.println("LinearSearch total execution time: " + (endTime-startTime) + " ms"); 	    	    
 	    checkPerson(index, arrayFirstname, arrayLastname, arrayAge, toFindId, toFindFirstname, toFindLastname, toFindAge);
 	    // Output: -1 (LinearSearch)
 	    
@@ -148,32 +148,32 @@ public class BinarySearch {
 	public static void checkPerson(int index, String[] arrayFirstname, String[] arrayLastname, Integer[] arrayAge, 
 		int toFindId, String toFindFirstname, String toFindLastname, int toFindAge) {
 		if (arrayFirstname[index].equals(toFindFirstname) && arrayLastname[index].equals(toFindLastname) && arrayAge[index].equals(toFindAge)) {
-		    System.out.println(index);  
-	    } else {
-		    System.out.println("-1");  
-	    }
+			System.out.println(index);  
+	        } else {
+			System.out.println("-1");  
+	        }
 	}    
 	public static int BinarySearch(Integer[] id, int key, int low, int high) {
 		int index = Integer.MAX_VALUE;
 			     
-	    while (low <= high) {
-	        int middle = (low + high) / 2;		        
-	        // If the element is bigger than the middle, it can be present in right subarray only
-	        if (id[middle] < key) {
-	        	low = middle + 1;		        	
-	        // If the element is smaller than the middle, it can be present in left subarray only
-	        } else if (id[middle] > key) {
-	        	high = middle - 1;		        
-	        // If the element is presented in the middle
-		    } else if (id[middle] == key) {
-		    	index = middle;
-		    	break;
-		      	}
-		  	}
-	    //return index;
-	    if ((index >= 0) & (index < id.length))		 	 
-	    	return index;   	
-	    else
+	        while (low <= high) {
+			int middle = (low + high) / 2;		        
+			// If the element is bigger than the middle, it can be present in right subarray only
+			if (id[middle] < key) {
+				low = middle + 1;		        	
+			// If the element is smaller than the middle, it can be present in left subarray only
+			} else if (id[middle] > key) {
+				high = middle - 1;		        
+			// If the element is presented in the middle
+			} else if (id[middle] == key) {
+				index = middle;
+				break;
+			}
+		}
+	    	//return index;
+	   	if ((index >= 0) & (index < id.length))		 	 
+	    		return index;   	
+	    	else
 			return -1;
 	}		
 	public static int LinearSearch(Integer[] intId, int key) {
